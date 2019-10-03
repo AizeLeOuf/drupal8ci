@@ -17,5 +17,5 @@ RUN composer global require phpunit/phpunit:^6.5
 ENV PATH="/root/.composer/vendor/bin/:${PATH}"
 
 # Add tests.
-COPY run-tests.sh /scripts/run-tests.sh
+COPY ../drupal/run-tests.sh /scripts/run-tests.sh
 RUN chmod +x /scripts/*.sh
