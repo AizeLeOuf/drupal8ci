@@ -11,6 +11,10 @@ RUN rm -rf ..?* .[!.]* *
 # Change docroot since we use Composer Drupal project.
 RUN sed -ri -e 's!/var/www/html!/var/www/html/web!g' /etc/apache2/sites-available/*.conf \
   && sed -ri -e 's!/var/www!/var/www/html/web!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+  
+RUN composer global require phpunit/phpunit:^6.5
+
+ENV PATH="/root/.composer/vendor/bin/:${PATH}"
 
 # Add tests.
 COPY run-tests.sh /scripts/run-tests.sh
